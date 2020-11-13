@@ -6,4 +6,5 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
 <h2><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_001">Блок 1.</a> Структуры данных и алгоритмы.</h2>
 <ul>
   <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_001/src/main/java/ru/job4j/it">Iterator</a></li>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_001/src/main/java/ru/job4j/generics">Generic</a></li>
 </ul>
