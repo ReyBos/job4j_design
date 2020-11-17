@@ -46,6 +46,26 @@ public class SimpleLinkedList<E> implements Iterable<E> {
         return rsl.item;
     }
 
+    public E deleteLast() {
+        E rsl;
+        switch (size) {
+            case 0 -> throw new NoSuchElementException();
+            case 1 -> {
+                rsl = last.item;
+                first = null;
+                last = null;
+            }
+            default -> {
+                rsl = last.item;
+                last = last.prev;
+                last.next = null;
+            }
+        }
+        size--;
+        modCount++;
+        return rsl;
+    }
+
     @Override
     public Iterator<E> iterator() {
         return new Iterator<>() {
