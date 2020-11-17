@@ -14,29 +14,33 @@ public final class MemStore<T extends Base> implements Store<T> {
 
     @Override
     public boolean replace(String id, T model) {
-        BiConsumer<T, T> func = (curModel, newModel) -> {
-            int index = mem.indexOf(curModel);
-            mem.set(index, newModel);
-        };
+        BiConsumer<Integer, T> func = mem::set;
         return changeMem(id, model, func);
     }
 
     @Override
     public boolean delete(String id) {
-        BiConsumer<T, T> func = (curModel, newModel) -> {
-            mem.remove(curModel);
-        };
+        BiConsumer<Integer, T> func = (index, model) -> mem.remove(index.intValue());
         return changeMem(id, null, func);
     }
 
-    private boolean changeMem(String id, T newModel, BiConsumer<T, T> func) {
-        T currModel = findById(id);
+    private boolean changeMem(String id, T newModel, BiConsumer<Integer, T> func) {
+        int index = getModelIndex(id);
         boolean rsl = false;
-        if (currModel != null) {
-            func.accept(currModel, newModel);
+        if (index != -1) {
             rsl = true;
+            func.accept(index, newModel);
         }
         return rsl;
+    }
+
+    private int getModelIndex(String id) {
+        for (int i = 0; i < mem.size(); i++) {
+            if (mem.get(i).getId().equals(id)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override

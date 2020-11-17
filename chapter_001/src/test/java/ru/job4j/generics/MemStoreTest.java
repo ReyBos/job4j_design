@@ -24,9 +24,18 @@ public class MemStoreTest {
 
     @Test
     public void delete() {
-        MemStore<User> store = new MemStore<>();
-        store.add(new User("1", "test"));
         store.delete("1");
         assertNull(store.findById("1"));
+    }
+
+    @Test
+    public void whenDeleteFalse() {
+        assertFalse(store.delete("2"));
+    }
+
+    @Test
+    public void whenReplaceFalse() {
+        boolean rsl = store.replace("3", new User("2", "new"));
+        assertFalse(rsl);
     }
 }
