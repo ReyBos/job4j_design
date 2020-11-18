@@ -11,6 +11,10 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     private transient Node<E> first;
     private transient Node<E> last;
 
+    public int getSize() {
+        return size;
+    }
+
     public void add(E value) {
         Node<E> l = last;
         Node<E> newNode = new Node<>(l, value, null);
