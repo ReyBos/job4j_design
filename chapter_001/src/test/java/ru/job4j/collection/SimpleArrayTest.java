@@ -1,7 +1,7 @@
 package ru.job4j.collection;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -61,5 +61,21 @@ public class SimpleArrayTest {
         Iterator<String> it = array.iterator();
         array.add("second");
         it.next();
+    }
+
+    @Test
+    public void whenContainsTrue() {
+        SimpleArray<String> array = new SimpleArray<>();
+        array.add("first");
+        array.add("second");
+        assertTrue(array.contains("first"));
+    }
+
+    @Test
+    public void whenContainsFalse() {
+        SimpleArray<String> array = new SimpleArray<>();
+        array.add("first");
+        array.add("second");
+        assertFalse(array.contains("test"));
     }
 }

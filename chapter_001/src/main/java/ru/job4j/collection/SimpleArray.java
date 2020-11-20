@@ -40,6 +40,18 @@ public class SimpleArray<T> implements Iterable<T> {
         modCount++;
     }
 
+    public boolean contains(T elem) {
+        boolean rsl = false;
+        Iterator<T> iter = this.iterator();
+        while (iter.hasNext()) {
+            if (iter.next().equals(elem)) {
+                rsl = true;
+                break;
+            }
+        }
+        return rsl;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
