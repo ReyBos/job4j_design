@@ -6,9 +6,13 @@ public class SimpleSet<E> implements Iterable {
     private SimpleArray<E> data = new SimpleArray<>();
 
     public void add(E e) {
-        if (!data.contains(e)) {
+        if (!contains(e)) {
             data.add(e);
         }
+    }
+
+    public boolean contains(E elem) {
+        return data.contains(elem);
     }
 
     @Override

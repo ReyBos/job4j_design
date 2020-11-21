@@ -44,7 +44,7 @@ public class SimpleArray<T> implements Iterable<T> {
         boolean rsl = false;
         Iterator<T> iter = this.iterator();
         while (iter.hasNext()) {
-            if (iter.next().equals(elem)) {
+            if (Objects.equals(iter.next(), elem)) {
                 rsl = true;
                 break;
             }
