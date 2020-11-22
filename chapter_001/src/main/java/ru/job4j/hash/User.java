@@ -35,10 +35,10 @@ public class User {
                 && Objects.equals(birthday, user.birthday);
     }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(name, children, birthday);
-//    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
+    }
 
     public static void main(String[] args) {
         Map<User, Object> storage = new HashMap<>();
@@ -52,8 +52,13 @@ public class User {
                 0,
                 new GregorianCalendar(1991, Calendar.APRIL, 14)
         );
+        User user3 = new User(
+                "Ivan",
+                0,
+                new GregorianCalendar(1991, Calendar.APRIL, 14)
+        );
         storage.put(user1, user1);
-        storage.put(user2, user2);
+        storage.put(user2, user3);
         for (User key : storage.keySet()) {
             System.out.println(key + " - " + storage.get(key));
         }
