@@ -53,4 +53,13 @@ public class SimpleHashMapTest {
         assertThat(it.next().getVal(), is(5));
         assertThat(it.next().getVal(), is(10));
     }
+
+    @Test
+    public void whenInsertThenReplace() {
+        SimpleHashMap<Integer, Integer> map = new SimpleHashMap<>();
+        map.insert(5, 5);
+        map.insert(5, 10);
+        Iterator<SimpleHashMap.Node<Integer, Integer>> it = map.iterator();
+        assertThat(it.next().getVal(), is(10));
+    }
 }
