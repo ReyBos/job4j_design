@@ -9,4 +9,5 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
   <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_001/src/main/java/ru/job4j/generics">Generic</a></li>
   <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_001/src/main/java/ru/job4j/collection">List</a></li>
   <li><a href="https://github.com/ReyBos/job4j_design/blob/master/chapter_001/src/main/java/ru/job4j/collection/SimpleSet.java">Set</a></li>
+  <li><a href="https://github.com/ReyBos/job4j_design/blob/master/chapter_001/src/main/java/ru/job4j/hash">Map</a></li>
 </ul>
