@@ -12,9 +12,16 @@ public class ConvertNumber {
     }
 
     public static void main(String[] args) {
-        System.out.println(binary(123));
-        System.out.println(binary(123 >>> 4));
-        System.out.println(binary(Integer.MAX_VALUE));
-        System.out.println(binary(Integer.MAX_VALUE >>> 16));
+        int cap = 100;
+        System.out.println(binary(cap));
+        System.out.println(binary(cap - 1));
+        int n = -1 >>> Integer.numberOfLeadingZeros(cap - 1);
+        System.out.println(binary(n));
+        System.out.println();
+        cap = 128;
+        System.out.println(binary(cap));
+        System.out.println(binary(cap - 1));
+        n = -1 >>> Integer.numberOfLeadingZeros(cap - 1);
+        System.out.println(binary(n));
     }
 }

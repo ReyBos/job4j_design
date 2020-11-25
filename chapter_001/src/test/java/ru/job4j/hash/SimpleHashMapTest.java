@@ -2,7 +2,9 @@ package ru.job4j.hash;
 
 import org.junit.Test;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
@@ -61,5 +63,23 @@ public class SimpleHashMapTest {
         map.insert(5, 10);
         Iterator<SimpleHashMap.Node<Integer, Integer>> it = map.iterator();
         assertThat(it.next().getVal(), is(10));
+    }
+
+    @Test(expected = ConcurrentModificationException.class)
+    public void whenIteratorHasNextException() {
+        SimpleHashMap<Integer, Integer> map = new SimpleHashMap<>();
+        map.insert(5, 5);
+        Iterator<SimpleHashMap.Node<Integer, Integer>> it = map.iterator();
+        map.insert(5, 10);
+        it.hasNext();
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenIteratorNextException() {
+        SimpleHashMap<Integer, Integer> map = new SimpleHashMap<>();
+        map.insert(5, 5);
+        Iterator<SimpleHashMap.Node<Integer, Integer>> it = map.iterator();
+        it.next();
+        it.next();
     }
 }
