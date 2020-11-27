@@ -1,32 +1,24 @@
 package ru.job4j.collection;
 
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Analize {
     public Info diff(List<User> previous, List<User> current) {
         Info rsl = new Info();
-        HashSet<User> previousSet = new HashSet<>(previous);
-        HashSet<User> currentSet = new HashSet<>(current);
-        for (User user : current) {
-            if (!previousSet.contains(user)) {
-                rsl.increaseAdded();
-                currentSet.remove(user);
-            }
-        }
-        for (User user : previous) {
-            if (!currentSet.contains(user)) {
+        HashMap<User, User> currentMap = (HashMap<User, User>) current.stream()
+                .collect(Collectors.toMap(k -> k, v -> v));
+        for (User prevUser : previous) {
+            User currUser = currentMap.get(prevUser);
+            if (currUser == null) {
                 rsl.increaseDeleted();
-            }
-        }
-        for (User currUser: currentSet) {
-            int prevUserIndex = previous.indexOf(currUser);
-            User prevUser = previous.get(prevUserIndex);
-            if (!prevUser.getName().equals(currUser.getName())) {
+            } else if (!prevUser.getName().equals(currUser.getName())) {
                 rsl.increaseChanged();
             }
         }
+        rsl.setAdded(currentMap.size() - previous.size() + rsl.getDeleted());
         return rsl;
     }
 
@@ -76,6 +68,14 @@ public class Analize {
             this.added = added;
             this.changed = changed;
             this.deleted = deleted;
+        }
+
+        public int getDeleted() {
+            return deleted;
+        }
+
+        public void setAdded(int added) {
+            this.added = added;
         }
 
         public void increaseAdded() {
