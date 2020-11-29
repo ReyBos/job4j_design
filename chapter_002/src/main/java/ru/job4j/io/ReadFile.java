@@ -23,7 +23,17 @@ public class ReadFile {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //чтение по строчно
+        // чтение по строчно
+        try (BufferedReader in = new BufferedReader(new FileReader("input.txt"))) {
+            List<String> lines = new ArrayList<>();
+            in.lines().forEach(lines::add);
+            for (String line : lines) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // через буферизированные потоки
         try (BufferedReader in = new BufferedReader(new FileReader("input.txt"))) {
             List<String> lines = new ArrayList<>();
             in.lines().forEach(lines::add);
