@@ -13,3 +13,7 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
   <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_001/src/main/java/ru/job4j/tree">Tree</a></li>
   <li><strong><a href="https://github.com/ReyBos/job4j_design_tests/tree/master/chapter_001">Тестовое задание</a> по итогам блока</strong></li>
 </ul>
+<h2><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_002">Блок 2.</a> Ввод-вывод.</h2>
+<ul>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_002/src/main/java/ru/job4j/io">Ввод-вывод</a></li>
+</ul>
