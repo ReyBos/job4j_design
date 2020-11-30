@@ -4,18 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Analizy {
-    private List<String> rsl;
-
-    public Analizy() {
-        this.rsl = new ArrayList<>();
-    }
-
     public void unavailable(String source, String target) {
-        try (BufferedReader in = new BufferedReader(new FileReader(source))) {
+        try (
+                BufferedReader in = new BufferedReader(new FileReader(source));
+                PrintWriter out = new PrintWriter(new FileOutputStream(target))
+        ) {
             Stack stack = new Stack();
             in.lines()
                     .forEach(s -> {
@@ -30,25 +25,13 @@ public class Analizy {
                                 (line[0].equals("200") || line[0].equals("300"))
                                 && stack.size() == 1
                         ) {
-                            String start = stack.pop();
-                            String end = line[1];
-                            rsl.add(start + ";" + end + ";");
+                            String rsl = stack.pop() + ";" + line[1] + ";";
+                            out.println(rsl);
                         }
                     });
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try (PrintWriter out = new PrintWriter(new FileOutputStream(target))) {
-            for (String str : rsl) {
-                out.println(str);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<String> getRsl() {
-        return rsl;
     }
 
     private class Stack {

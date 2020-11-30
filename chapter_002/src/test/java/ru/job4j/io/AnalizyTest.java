@@ -2,6 +2,9 @@ package ru.job4j.io;
 
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
@@ -19,6 +22,14 @@ public class AnalizyTest {
                 "10:58:01;10:59:01;",
                 "11:01:02;11:02:02;"
         );
-        assertThat(analizy.getRsl(), is(expected));
+        List<String> rsl = new ArrayList<>();
+        try (BufferedReader in = new BufferedReader(
+                new FileReader("./data/unavailable.csv")
+        )) {
+            in.lines().forEach(rsl::add);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertThat(rsl, is(expected));
     }
 }
