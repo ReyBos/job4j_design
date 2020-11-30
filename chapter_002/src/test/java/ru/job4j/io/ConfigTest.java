@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class ConfigTest {
     @Test
-    public void whenPairWithoutComment() {
+    public void load() {
         String path = "./data/app.properties";
         Config config = new Config(path);
         config.load();
