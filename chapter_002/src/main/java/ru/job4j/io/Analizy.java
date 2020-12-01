@@ -11,7 +11,7 @@ public class Analizy {
                 BufferedReader in = new BufferedReader(new FileReader(source));
                 PrintWriter out = new PrintWriter(new FileOutputStream(target))
         ) {
-            Stack stack = new Stack();
+            Stack<String> stack = new Stack<>();
             in.lines()
                     .forEach(s -> {
                         String[] line = s.split(" ");
@@ -34,21 +34,21 @@ public class Analizy {
         }
     }
 
-    private class Stack {
-        private String[] storage;
+    private class Stack<T> {
+        private Object[] storage;
         private int point;
 
         public Stack() {
-            storage = new String[1];
+            storage = new Object[1];
             point = 0;
         }
 
-        public void push(String str) {
+        public void push(T str) {
             storage[point++] = str;
         }
 
         public String pop() {
-            return storage[--point];
+            return (String) storage[--point];
         }
 
         public int size() {
