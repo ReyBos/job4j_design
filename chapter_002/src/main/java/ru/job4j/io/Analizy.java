@@ -47,8 +47,9 @@ public class Analizy {
             storage[point++] = str;
         }
 
-        public String pop() {
-            return (String) storage[--point];
+        @SuppressWarnings("unchecked")
+        public T pop() {
+            return (T) storage[--point];
         }
 
         public int size() {
