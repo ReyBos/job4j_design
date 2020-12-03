@@ -7,7 +7,11 @@ public class ArgsName {
     private final Map<String, String> values = new HashMap<>();
 
     public String get(String key) {
-        return values.get(key);
+        String rsl = values.get(key);
+        if (rsl == null) {
+            throw new IllegalArgumentException();
+        }
+        return rsl;
     }
 
     private void parse(String[] args) {
