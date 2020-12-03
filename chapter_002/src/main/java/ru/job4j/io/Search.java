@@ -22,4 +22,12 @@ public class Search {
         Files.walkFileTree(root, searcher);
         return searcher.getPaths();
     }
+
+    public static List<Path> searchExclude(Path root, String ext) throws IOException {
+        SearchFiles searcher = new SearchFiles(
+                p -> !p.toFile().getName().endsWith(ext.substring(1))
+        );
+        Files.walkFileTree(root, searcher);
+        return searcher.getPaths();
+    }
 }
