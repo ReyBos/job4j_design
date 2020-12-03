@@ -27,14 +27,22 @@ public class ArgZip {
     }
 
     public String directory() {
-        return parser.get("d");
+        return getValue("d");
     }
 
     public String exclude() {
-        return parser.get("e");
+        return getValue("e");
     }
 
     public String output() {
-        return parser.get("o");
+        return getValue("o");
+    }
+
+    private String getValue(String arg) {
+        try {
+            return parser.get(arg);
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 }
