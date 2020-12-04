@@ -16,4 +16,5 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
 <h2><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_002">Блок 2.</a> Ввод-вывод.</h2>
 <ul>
   <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_002/src/main/java/ru/job4j/io">Ввод-вывод</a></li>
+  <li><a href="https://github.com/ReyBos/job4j_design/blob/master/chapter_002/src/main/java/ru/job4j/io/EchoServer.java">Socket</a></li>
 </ul>
