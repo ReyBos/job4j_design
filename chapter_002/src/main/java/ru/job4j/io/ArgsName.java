@@ -9,7 +9,7 @@ public class ArgsName {
     public String get(String key) {
         String rsl = values.get(key);
         if (rsl == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Не передан аргумент: -" + key);
         }
         return rsl;
     }

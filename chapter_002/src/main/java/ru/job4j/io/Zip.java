@@ -1,6 +1,7 @@
 package ru.job4j.io;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -38,13 +39,19 @@ public class Zip {
         ArgZip argZip = new ArgZip(args);
         if (argZip.valid()) {
             Path root = Paths.get(argZip.directory());
-            List<Path> sourcesPath = Search.searchExclude(root, argZip.exclude());
+            List<Path> sourcesPath = searchExclude(root, argZip.exclude());
             List<File> sources = sourcesPath.stream()
                     .map(Path::toFile)
                     .collect(Collectors.toList());
             new Zip().packFiles(sources, new File(argZip.output()));
-        } else {
-            System.out.println("Не переданы следующие параметры: " + argZip.getError());
         }
+    }
+
+    public static List<Path> searchExclude(Path root, String ext) throws IOException {
+        SearchFiles searcher = new SearchFiles(
+                p -> !p.toFile().getName().endsWith(ext.substring(1))
+        );
+        Files.walkFileTree(root, searcher);
+        return searcher.getPaths();
     }
 }
