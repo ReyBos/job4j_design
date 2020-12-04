@@ -20,9 +20,10 @@ public class EchoServer {
                 try (OutputStream out = socket.getOutputStream();
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
-                    String str, answer = "";
+                    String answer = "";
                     boolean needStop = false;
-                    for (int i = 0; !(str = in.readLine()).isEmpty(); i++) {
+                    String str = in.readLine();
+                    for (int i = 0; !str.isEmpty(); i++) {
                         if (i == 0) {
                             Pattern pattern = Pattern.compile("[a-zA-Z]+=[a-zA-Z]+");
                             Matcher matcher = pattern.matcher(str);
@@ -41,6 +42,7 @@ public class EchoServer {
                             }
                         }
                         System.out.println(str);
+                        str = in.readLine();
                     }
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     if (!answer.isEmpty()) {
