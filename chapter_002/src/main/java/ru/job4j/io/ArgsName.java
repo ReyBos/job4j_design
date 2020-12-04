@@ -17,6 +17,11 @@ public class ArgsName {
     private void parse(String[] args) {
         for (String arg : args) {
             String[] line = arg.split("=");
+            if (line.length != 2) {
+                throw new IllegalArgumentException(
+                        "Передайте аргумент в виде ключ=значение (" + arg + ")"
+                );
+            }
             values.put(line[0].replaceFirst("-", ""), line[1]);
         }
     }
