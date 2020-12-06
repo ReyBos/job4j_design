@@ -12,9 +12,6 @@ public class ConsoleChat {
     private final String path;
     private final String botAnswersPath;
     private final List<String> botAnswers;
-    private static final String OUT = "закончить";
-    private static final String STOP = "стоп";
-    private static final String CONTINUE = "продолжить";
     private static final Charset CHARSET = StandardCharsets.UTF_8;
 
     public ConsoleChat(String path, String botAnswersPath) {
@@ -48,24 +45,24 @@ public class ConsoleChat {
                      new FileWriter(path, CHARSET, true)
              )
         ) {
+            ConsoleChatController controller = new ConsoleChatController();
             System.out.println("Задайте вопрос боту, управлять ботом можно фразами:");
-            System.out.println(OUT + " / " + STOP + " / " + CONTINUE);
-            String question = scanner.nextLine();
-            while (!question.equals(OUT)) {
+            System.out.println(
+                    controller.getOutConst()
+                    + " / " + controller.getStopConst()
+                    + " / " + controller.getContinueConst()
+            );
+            String question;
+            do {
+                question = scanner.nextLine();
+                controller.checkAction(question);
                 writer.write(question + System.lineSeparator());
-                if (question.equals(STOP)) {
-                    isPaused = true;
-                } else if (question.equals(CONTINUE)) {
-                    isPaused = false;
-                }
-                if (!isPaused) {
+                if (!controller.isPause() && !controller.isOut()) {
                     String answer = getRandomAnswer();
                     System.out.println(answer);
                     writer.write(answer + System.lineSeparator());
                 }
-                question = scanner.nextLine();
-            }
-            writer.write(question + System.lineSeparator());
+            } while (!controller.isOut());
         } catch (IOException e) {
             e.printStackTrace();
         }
