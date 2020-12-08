@@ -31,5 +31,10 @@ public class UsageLog4j {
                 db,
                 bool
         );
+        try {
+            throw new Exception("Not supported code");
+        } catch (Exception e) {
+            LOG.error("Exception in log example", e);
+        }
     }
 }

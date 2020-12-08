@@ -1,5 +1,8 @@
 package ru.job4j.io;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -8,10 +11,11 @@ import java.util.regex.Pattern;
 
 public class EchoServer {
     private static final Pattern GET_PARAM_PATTERN = Pattern.compile("[a-zA-Z]+=[a-zA-Z0-9]+");
+    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
+
     //curl -i http://localhost:9000/?msg=Hello
     //Параметр -i указывает curl вывести всю информацию принятую от сервера.
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         try (ServerSocket server = new ServerSocket(9000)) {
             while (true) {
                 // ожидает, когда к нему обратиться клиент
@@ -44,6 +48,8 @@ public class EchoServer {
                     }
                 }
             }
+        } catch (IOException e) {
+            LOG.error("Error", e);
         }
     }
 }
