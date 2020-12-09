@@ -17,4 +17,6 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
 <ul>
   <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_002/src/main/java/ru/job4j/io">Ввод-вывод</a></li>
   <li><a href="https://github.com/ReyBos/job4j_design/blob/master/chapter_002/src/main/java/ru/job4j/io/EchoServer.java">Socket</a></li>
+  <li><a href="https://github.com/ReyBos/job4j_design/blob/master/chapter_002/src/main/java/ru/job4j/io/UsageLog4j.java">Логгирование</a></li>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_002/src/main/java/ru/job4j/serialization">Сериализация</a></li>
 </ul>
