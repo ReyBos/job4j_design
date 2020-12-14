@@ -1,0 +1,11 @@
+insert into role(name) VALUES ('admin');
+insert into role(name) VALUES ('user');
+insert into rules(level) VALUES (100);
+insert into role_rules(role_id, rules_id) VALUES (2, 1);
+insert into users(name, role_id) VALUES ('Petr', 1);
+insert into category(name) VALUES ('big');
+insert into category(name) VALUES ('small');
+insert into state(name) VALUES ('close');
+insert into item(name, user_id, category_id, state_id) VALUES ('Item 1', 1, 2, 1);
+insert into comments(content, item_id) VALUES ('create', 1);
+insert into attachs(size, item_id) VALUES (12345, 1);
