@@ -21,3 +21,11 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
   <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_002/src/main/java/ru/job4j/serialization">Сериализация</a></li>
   <li><strong><a href="https://github.com/ReyBos/job4j_design_tests/tree/master/chapter_002_final_task">Итоговое</a> задание</strong></li>
 </ul>
+<h2><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_003">Блок 3.</a> SQL, JDBC</h2>
+<ul>
+  <li>Настройка PostgreSQL</li>
+  <li>Create Update Insert</li>
+  <li>Query</li>
+  <li>Outer join</li>
+  <li>JDBC</li>
+</ul>
