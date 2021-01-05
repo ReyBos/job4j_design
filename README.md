@@ -29,3 +29,10 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
   <li>Outer join</li>
   <li>JDBC</li>
 </ul>
+<h2><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_004">Блок 4.</a> Garbage Collection</h2>
+<ul>
+  <li>Понятие сборщик мусора</li>
+  <li>Виды сборщиков мусоров</li>
+  <li>Профилирование приложения</li>
+  <li>Типы ссылок и коллекции на soft weak ссылках</li>
+</ul>
