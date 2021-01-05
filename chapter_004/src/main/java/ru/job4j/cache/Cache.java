@@ -9,20 +9,21 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Cache {
-    private final Map<String, SoftReference<String>> storage;
-    private final String root;
+    private SoftReference<Map<String, String>> storageLink;
+    private String root;
 
     public Cache(String root) {
-        this.storage = new HashMap<>();
+        this.storageLink = new SoftReference<>(new HashMap<>());
         this.root = root;
     }
 
     public String get(String fileName) throws IOException {
-        SoftReference<String> file = storage.get(fileName);
-        if (file == null || file.get() == null) {
-            return load(fileName);
+        Map<String, String> storage = storageLink.get();
+        if (storage == null) {
+            storageLink = new SoftReference<>(new HashMap<>());
+            storage = storageLink.get();
         }
-        return file.get();
+        return storage.get(fileName) != null ? storage.get(fileName) : load(fileName);
     }
 
     private String load(String fileName) throws IOException {
@@ -30,7 +31,7 @@ public class Cache {
         try (BufferedReader reader = new BufferedReader(new FileReader(root + "/" + fileName))) {
             content = reader.lines().
                     collect(Collectors.joining(System.lineSeparator()));
-            storage.put(fileName, new SoftReference<>(content));
+            storageLink.get().put(fileName, content);
         }
         return content;
     }
