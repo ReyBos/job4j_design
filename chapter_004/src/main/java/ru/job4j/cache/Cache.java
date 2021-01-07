@@ -22,7 +22,11 @@ public class Cache {
         if (file == null || file.get() == null) {
             return load(fileName);
         }
-        return file.get();
+        String rsl = file.get();
+        if (rsl == null) {
+            rsl = load(fileName);
+        }
+        return rsl;
     }
 
     private String load(String fileName) throws IOException {
