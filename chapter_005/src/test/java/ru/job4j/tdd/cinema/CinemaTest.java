@@ -3,7 +3,6 @@ package ru.job4j.tdd.cinema;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
-import org.junit.Ignore;
 import ru.job4j.tdd.account.Account;
 import ru.job4j.tdd.account.AccountCinema;
 import ru.job4j.tdd.session.Session;
@@ -16,7 +15,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class CinemaTest {
-    @Ignore
+//    @Test
     public void buy() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -26,17 +25,34 @@ public class CinemaTest {
         assertThat(ticket, is(new Ticket3D()));
     }
 
-    @Ignore
-    public void buyError() {
+//    @Test(expected = IllegalArgumentException.class)
+    public void whenBuyThenIllegalDate() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
         Calendar date = Calendar.getInstance();
         date.set(2020, 10, 10, 23, 00);
         Ticket ticket = cinema.buy(account, 1, 1, date);
-        assertNull(ticket);
     }
 
-    @Ignore
+//    @Test(expected = IllegalArgumentException.class)
+    public void whenBuyThenIllegalSeat() {
+        Account account = new AccountCinema();
+        Cinema cinema = new Cinema3D();
+        Calendar date = Calendar.getInstance();
+        date.set(2020, 10, 10, 23, 00);
+        Ticket ticket = cinema.buy(account, 1, 1, date);
+    }
+
+//    @Test(expected = IllegalArgumentException.class)
+    public void whenBuyThenHasNotMoney() {
+        Account account = new AccountCinema();
+        Cinema cinema = new Cinema3D();
+        Calendar date = Calendar.getInstance();
+        date.set(2020, 10, 10, 23, 00);
+        Ticket ticket = cinema.buy(account, 1, 1, date);
+    }
+
+//    @Test
     public void find() {
         Cinema cinema = new Cinema3D();
         cinema.add(new Session3D());
@@ -44,7 +60,7 @@ public class CinemaTest {
         assertThat(sessions, is(Arrays.asList(new Session3D())));
     }
 
-    @Ignore
+//    @Test
     public void findEmpty() {
         Cinema cinema = new Cinema3D();
         List<Session> sessions = cinema.find(session -> true);

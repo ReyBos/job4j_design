@@ -14,12 +14,12 @@ import java.util.function.Predicate;
 public class Cinema3D implements Cinema {
     @Override
     public List<Session> find(Predicate<Session> filter) {
-        return Arrays.asList(new Session3D());
+        return null;
     }
 
     @Override
     public Ticket buy(Account account, int row, int column, Calendar date) {
-        return new Ticket3D();
+        return null;
     }
 
     @Override
