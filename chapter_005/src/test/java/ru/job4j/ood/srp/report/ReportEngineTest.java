@@ -80,4 +80,35 @@ public class ReportEngineTest {
                 + "</p></body></html>";
         assertThat(engine.generate(em -> true), is(expect));
     }
+
+    @Test
+    public void whenJsonGenerated() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee("Ivan", now, now, 100);
+        store.add(worker);
+        ReportType reportType = new ReportJson();
+        ReportEngine engine = new ReportEngine(store, reportType);
+        String expect = "{\"0\": {"
+                + "\"Name\": \"" + worker.getName() + "\","
+                + "\"Salary\": " + worker.getSalary() + "}}";
+        assertThat(engine.generate(em -> true), is(expect));
+    }
+
+    @Test
+    public void whenXmlGenerated() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee("Ivan", now, now, 100);
+        store.add(worker);
+        ReportType reportType = new ReportXml();
+        ReportEngine engine = new ReportEngine(store, reportType);
+        String expect = "<Employees>"
+                + "<Employee>"
+                + "<Name>" + worker.getName() + "</Name>"
+                + "<Salary>" + worker.getSalary() + "</Salary>"
+                + "</Employee>"
+                + "</Employees>";
+        assertThat(engine.generate(em -> true), is(expect));
+    }
 }
