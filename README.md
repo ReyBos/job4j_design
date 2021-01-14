@@ -36,3 +36,15 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
   <li>Профилирование приложения</li>
   <li>Типы ссылок и коллекции на soft weak ссылках</li>
 </ul>
+<h2><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005">Блок 5.</a> ООД</h2>
+<ul>
+  <li>
+    Задание <strong><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/food">"Хранилище продуктов"</a></strong>
+  </li>
+  <li>Test Driver Development</li>
+  <li><strong>S</strong>ingle Responsibility Principle</li>
+  <li><strong>O</strong>pen-Closed Principle</li>
+  <li><strong>L</strong>iskov Substitution Principle</li>
+  <li><strong>I</strong>nterface Segregation Principle</li>
+  <li><strong>D</strong>ependency Inversion Principle</li>
+</ul>
