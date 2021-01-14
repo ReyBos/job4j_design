@@ -13,6 +13,11 @@ public class Warehouse implements Storage {
     }
 
     @Override
+    public boolean accept(Food item) {
+        return Double.compare(item.getLivedTimePercent(), 0.25) < 0;
+    }
+
+    @Override
     public boolean add(Food item) {
         if (products.contains(item)) {
             return true;

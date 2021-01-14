@@ -13,6 +13,11 @@ public class Trash implements Storage {
     }
 
     @Override
+    public boolean accept(Food item) {
+        return Double.compare(item.getLivedTimePercent(), 1) > 0;
+    }
+
+    @Override
     public boolean add(Food item) {
         if (products.contains(item)) {
             return true;

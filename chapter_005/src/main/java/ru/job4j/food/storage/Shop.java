@@ -12,6 +12,11 @@ public class Shop implements Storage {
         this.products = new ArrayList<>();
     }
 
+    @Override
+    public boolean accept(Food item) {
+        return Double.compare(item.getLivedTimePercent(), 0.25) >= 0 && Double.compare(item.getLivedTimePercent(), 1) < 0;
+    }
+
     private void checkAddingDiscount(Food item) {
         if (Double.compare(item.getLivedTimePercent(), 0.75) > 0) {
             item.setDiscount(0.75);

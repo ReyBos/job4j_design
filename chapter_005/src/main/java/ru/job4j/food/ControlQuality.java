@@ -2,32 +2,25 @@ package ru.job4j.food;
 
 import ru.job4j.food.storage.Storage;
 
-public class ControlQuality {
-    private Storage warehouse;
-    private Storage shop;
-    private Storage trash;
-    private StorageDispatch storageDispatch;
+import java.util.List;
 
-    public ControlQuality(Storage warehouse, Storage shop, Storage trash) {
-        this.warehouse = warehouse;
-        this.shop = shop;
-        this.trash = trash;
-        this.storageDispatch = new StorageDispatch();
+public class ControlQuality {
+    private List<Storage> storages;
+
+    public ControlQuality(List<Storage> storages) {
+        this.storages = storages;
     }
 
     public boolean sort(Food item) {
-        return storageDispatch.getStorage(item, this).add(item);
+        for (Storage storage : storages) {
+            if (storage.accept(item)) {
+                return storage.add(item);
+            }
+        }
+        throw new IllegalStateException("Нет подходящего хранилища");
     }
 
-    public Storage getWarehouse() {
-        return warehouse;
-    }
-
-    public Storage getShop() {
-        return shop;
-    }
-
-    public Storage getTrash() {
-        return trash;
+    public List<Storage> getStorages() {
+        return storages;
     }
 }

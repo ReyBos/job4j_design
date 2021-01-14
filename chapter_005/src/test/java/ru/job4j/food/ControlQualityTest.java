@@ -18,11 +18,11 @@ public class ControlQualityTest {
 
     @Before
     public void init() {
-        this.controlQuality = new ControlQuality(
+        this.controlQuality = new ControlQuality(List.of(
                 new Warehouse(),
                 new Shop(),
                 new Trash()
-        );
+        ));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class ControlQualityTest {
                 0
         );
         controlQuality.sort(item);
-        List<Food> warehouseFoods = controlQuality.getWarehouse().findAll();
+        List<Food> warehouseFoods = controlQuality.getStorages().get(0).findAll();
         assertThat(warehouseFoods, is(List.of(item)));
     }
 
@@ -55,7 +55,7 @@ public class ControlQualityTest {
                 0
         );
         controlQuality.sort(item);
-        List<Food> shopFoods = controlQuality.getShop().findAll();
+        List<Food> shopFoods = controlQuality.getStorages().get(1).findAll();
         assertThat(shopFoods, is(List.of(item)));
     }
 
@@ -73,7 +73,7 @@ public class ControlQualityTest {
                 0
         );
         controlQuality.sort(item);
-        List<Food> shopFoods = controlQuality.getShop().findAll();
+        List<Food> shopFoods = controlQuality.getStorages().get(1).findAll();
         assertTrue(shopFoods.get(0).getDiscount() > 0);
     }
 
@@ -91,7 +91,7 @@ public class ControlQualityTest {
                 0
         );
         controlQuality.sort(item);
-        List<Food> trashFoods = controlQuality.getTrash().findAll();
+        List<Food> trashFoods = controlQuality.getStorages().get(2).findAll();
         assertThat(trashFoods, is(List.of(item)));
     }
 }
