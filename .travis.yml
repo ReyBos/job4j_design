@@ -8,6 +8,7 @@ services:
 
 before_install:
   - psql -c 'create database idea_db;' -U postgres
+  - psql -c 'create database food;' -U postgres
 
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
