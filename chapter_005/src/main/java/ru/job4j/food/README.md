@@ -18,5 +18,5 @@
 В данной задаче надо использовать шаблон проектирования - https://www.tutorialspoint.com/design_pattern/strategy_pattern.htm
 </p>
 <p>
-Нельзя использовать instanceOf или if ("Shop".equals(storage.getName())
+Нельзя использовать instanceOf или if ("Shop".equals(container.getName())
 </p>

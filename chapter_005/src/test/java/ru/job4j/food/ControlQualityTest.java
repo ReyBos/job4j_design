@@ -2,10 +2,12 @@ package ru.job4j.food;
 
 import org.junit.Before;
 import org.junit.Test;
-import ru.job4j.food.storage.Shop;
-import ru.job4j.food.storage.Trash;
-import ru.job4j.food.storage.Warehouse;
+import ru.job4j.food.container.Shop;
+import ru.job4j.food.container.Trash;
+import ru.job4j.food.container.Warehouse;
+import ru.job4j.food.store.MemStore;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -19,14 +21,14 @@ public class ControlQualityTest {
     @Before
     public void init() {
         this.controlQuality = new ControlQuality(List.of(
-                new Warehouse(),
-                new Shop(),
-                new Trash()
+                new Warehouse(new MemStore()),
+                new Shop(new MemStore()),
+                new Trash(new MemStore())
         ));
     }
 
     @Test
-    public void whenSortThenWarehouse() {
+    public void whenSortThenWarehouse() throws SQLException {
         Calendar expiryDate = new GregorianCalendar();
         expiryDate.add(Calendar.DAY_OF_MONTH, 1);
         Food item = new Food(
@@ -37,12 +39,12 @@ public class ControlQualityTest {
                 0
         );
         controlQuality.sort(item);
-        List<Food> warehouseFoods = controlQuality.getStorages().get(0).findAll();
+        List<Food> warehouseFoods = controlQuality.getContainers().get(0).findAll();
         assertThat(warehouseFoods, is(List.of(item)));
     }
 
     @Test
-    public void whenSortThenShop() {
+    public void whenSortThenShop() throws SQLException {
         Calendar expiryDate = new GregorianCalendar();
         expiryDate.add(Calendar.DAY_OF_MONTH, 1);
         Calendar createDate = new GregorianCalendar();
@@ -55,12 +57,12 @@ public class ControlQualityTest {
                 0
         );
         controlQuality.sort(item);
-        List<Food> shopFoods = controlQuality.getStorages().get(1).findAll();
+        List<Food> shopFoods = controlQuality.getContainers().get(1).findAll();
         assertThat(shopFoods, is(List.of(item)));
     }
 
     @Test
-    public void whenSortThenShopAndDiscount() {
+    public void whenSortThenShopAndDiscount() throws SQLException {
         Calendar expiryDate = new GregorianCalendar();
         expiryDate.add(Calendar.HOUR, 1);
         Calendar createDate = new GregorianCalendar();
@@ -73,12 +75,12 @@ public class ControlQualityTest {
                 0
         );
         controlQuality.sort(item);
-        List<Food> shopFoods = controlQuality.getStorages().get(1).findAll();
+        List<Food> shopFoods = controlQuality.getContainers().get(1).findAll();
         assertTrue(shopFoods.get(0).getDiscount() > 0);
     }
 
     @Test
-    public void whenSortThenTrash() {
+    public void whenSortThenTrash() throws SQLException {
         Calendar expiryDate = new GregorianCalendar();
         expiryDate.add(Calendar.DAY_OF_MONTH, -1);
         Calendar createDate = new GregorianCalendar();
@@ -91,7 +93,7 @@ public class ControlQualityTest {
                 0
         );
         controlQuality.sort(item);
-        List<Food> trashFoods = controlQuality.getStorages().get(2).findAll();
+        List<Food> trashFoods = controlQuality.getContainers().get(2).findAll();
         assertThat(trashFoods, is(List.of(item)));
     }
 }

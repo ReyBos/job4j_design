@@ -39,6 +39,14 @@ public class Food {
         return discount;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
     public void setDiscount(double discount) {
         this.discount = discount;
     }
@@ -52,13 +60,14 @@ public class Food {
             return false;
         }
         Food food = (Food) o;
-        return Objects.equals(name, food.name)
+        return Double.compare(food.price, price) == 0
+                && Objects.equals(name, food.name)
                 && Objects.equals(expiryDate, food.expiryDate)
                 && Objects.equals(createDate, food.createDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, expiryDate, createDate);
+        return Objects.hash(name, expiryDate, createDate, price);
     }
 }

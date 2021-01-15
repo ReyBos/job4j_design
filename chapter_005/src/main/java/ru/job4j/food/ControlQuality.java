@@ -1,26 +1,28 @@
 package ru.job4j.food;
 
-import ru.job4j.food.storage.Storage;
+import ru.job4j.food.container.Container;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ControlQuality {
-    private List<Storage> storages;
+    private List<Container> containers;
 
-    public ControlQuality(List<Storage> storages) {
-        this.storages = storages;
+    public ControlQuality(List<Container> containers) {
+        this.containers = containers;
     }
 
-    public boolean sort(Food item) {
-        for (Storage storage : storages) {
-            if (storage.accept(item)) {
-                return storage.add(item);
+    public void sort(Food item) throws SQLException {
+        for (Container container : containers) {
+            if (container.accept(item)) {
+                container.add(item);
+                return;
             }
         }
         throw new IllegalStateException("Нет подходящего хранилища");
     }
 
-    public List<Storage> getStorages() {
-        return storages;
+    public List<Container> getContainers() {
+        return containers;
     }
 }
