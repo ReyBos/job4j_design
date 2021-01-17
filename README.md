@@ -38,13 +38,19 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
 </ul>
 <h2><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005">Блок 5.</a> ООД</h2>
 <ul>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/tdd">TDD</a> (Test Driver Development)</li>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/ood/srp"><strong>S</strong>RP</a> (Single Responsibility Principle)</li>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/ood/ocp"><strong>O</strong>CP</a> (Open-Closed Principle)</li>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/ood/lsp"><strong>L</strong>SP</a> (Liskov Substitution Principle)</li>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/ood/isp"><strong>I</strong>SP</a> (Interface Segregation Principle)</li>
+  <li><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/food"><strong>D</strong>IP</a> (Dependency Inversion Principle)</li>
   <li>
     Задание <strong><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/food">"Хранилище продуктов"</a></strong>
   </li>
-  <li>Test Driver Development</li>
-  <li><strong>S</strong>ingle Responsibility Principle</li>
-  <li><strong>O</strong>pen-Closed Principle</li>
-  <li><strong>L</strong>iskov Substitution Principle</li>
-  <li><strong>I</strong>nterface Segregation Principle</li>
-  <li><strong>D</strong>ependency Inversion Principle</li>
+  <li>
+    Задание <strong><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/ood/lsp">"Парковка машин"</a></strong>
+  </li>
+  <li>
+    Задание <strong><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/ood/isp">"Создать меню"</a></strong>
+  </li>
 </ul>
