@@ -2,6 +2,7 @@ package ru.job4j.food.store;
 
 import ru.job4j.food.Food;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,13 @@ public class MemStore implements Store {
     @Override
     public List<Food> findAll() {
         return List.copyOf(foods);
+    }
+
+    @Override
+    public List<Food> deleteAll() throws SQLException {
+        List<Food> oldFood = foods;
+        foods = new ArrayList<>();
+        return oldFood;
     }
 
     @Override

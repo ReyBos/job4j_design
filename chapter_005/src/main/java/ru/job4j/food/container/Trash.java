@@ -27,4 +27,9 @@ public class Trash implements Container {
     public List<Food> findAll() throws SQLException {
         return store.findAll();
     }
+
+    @Override
+    public List<Food> deleteAll() throws SQLException {
+        return store.deleteAll();
+    }
 }

@@ -96,4 +96,62 @@ public class ControlQualityTest {
         List<Food> trashFoods = controlQuality.getContainers().get(2).findAll();
         assertThat(trashFoods, is(List.of(item)));
     }
+
+    @Test
+    public void whenSortAndResort() throws SQLException {
+        Calendar expiryDate = new GregorianCalendar();
+        expiryDate.add(Calendar.DAY_OF_MONTH, 1);
+        Calendar createDate = new GregorianCalendar();
+        Food item = new Food(
+                "Склад",
+                expiryDate,
+                createDate,
+                100,
+                0
+        );
+        controlQuality.sort(item);
+        Calendar expiryDate2 = new GregorianCalendar();
+        expiryDate2.add(Calendar.DAY_OF_MONTH, 1);
+        Calendar createDate2 = new GregorianCalendar();
+        createDate2.add(Calendar.DAY_OF_MONTH, -1);
+        Food item2 = new Food(
+                "Магазин",
+                expiryDate2,
+                createDate2,
+                100,
+                0
+        );
+        controlQuality.sort(item2);
+        Calendar expiryDate3 = new GregorianCalendar();
+        expiryDate3.add(Calendar.DAY_OF_MONTH, -1);
+        Calendar createDate3 = new GregorianCalendar();
+        createDate3.add(Calendar.DAY_OF_MONTH, -2);
+        Food item3 = new Food(
+                "Мусорка",
+                expiryDate3,
+                createDate3,
+                100,
+                0
+        );
+        controlQuality.sort(item3);
+        List<Food> warehouseFoods = controlQuality.getContainers().get(0).findAll();
+        assertThat(warehouseFoods, is(List.of(item)));
+        List<Food> shopFoods = controlQuality.getContainers().get(1).findAll();
+        assertThat(shopFoods, is(List.of(item2)));
+        List<Food> trashFoods = controlQuality.getContainers().get(2).findAll();
+        assertThat(trashFoods, is(List.of(item3)));
+        item.setExpiryDate(expiryDate2);
+        item.setCreateDate(createDate2);
+        item2.setExpiryDate(expiryDate3);
+        item2.setCreateDate(createDate3);
+        item3.setExpiryDate(expiryDate);
+        item3.setCreateDate(createDate);
+        controlQuality.resort();
+        warehouseFoods = controlQuality.getContainers().get(0).findAll();
+        assertThat(warehouseFoods, is(List.of(item3)));
+        shopFoods = controlQuality.getContainers().get(1).findAll();
+        assertThat(shopFoods, is(List.of(item)));
+        trashFoods = controlQuality.getContainers().get(2).findAll();
+        assertThat(trashFoods, is(List.of(item2)));
+    }
 }

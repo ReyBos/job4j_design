@@ -53,6 +53,16 @@ public class SqlStore implements Store {
     }
 
     @Override
+    public List<Food> deleteAll() throws SQLException {
+        List<Food> oldFood = findAll();
+        String sql = "delete from food";
+        try (PreparedStatement statement = cn.prepareStatement(sql)) {
+            statement.execute();
+        }
+        return oldFood;
+    }
+
+    @Override
     public void close() throws Exception {
         if (cn != null) {
             cn.close();

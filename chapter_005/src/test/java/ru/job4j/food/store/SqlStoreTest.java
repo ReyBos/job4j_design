@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Properties;
 
 import static org.hamcrest.core.Is.is;
@@ -44,6 +45,21 @@ public class SqlStoreTest {
             );
             store.add(item);
             assertThat(store.findAll().get(0), is(item));
+        }
+    }
+
+    @Test
+    public void whenAddThenDelete() throws Exception {
+        try (SqlStore store = new SqlStore(ConnectionRollback.create(this.init()))) {
+            Calendar expiryDate = new GregorianCalendar();
+            expiryDate.add(Calendar.HOUR, 1);
+            Calendar createDate = new GregorianCalendar();
+            Food item = new Food(
+                    "milk", expiryDate, createDate, 1.0, 0
+            );
+            store.add(item);
+            assertThat(store.deleteAll().get(0), is(item));
+            assertThat(store.findAll(), is(List.of()));
         }
     }
 }

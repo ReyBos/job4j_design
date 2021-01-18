@@ -51,6 +51,14 @@ public class Food {
         this.discount = discount;
     }
 
+    public void setExpiryDate(Calendar expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public void setCreateDate(Calendar createDate) {
+        this.createDate = createDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

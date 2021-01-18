@@ -3,6 +3,7 @@ package ru.job4j.food;
 import ru.job4j.food.container.Container;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControlQuality {
@@ -20,6 +21,16 @@ public class ControlQuality {
             }
         }
         throw new IllegalStateException("Нет подходящего хранилища");
+    }
+
+    public void resort() throws SQLException {
+        List<Food> containersFood = new ArrayList<>();
+        for (Container container : containers) {
+            containersFood.addAll(container.deleteAll());
+        }
+        for (Food food : containersFood) {
+            sort(food);
+        }
     }
 
     public List<Container> getContainers() {

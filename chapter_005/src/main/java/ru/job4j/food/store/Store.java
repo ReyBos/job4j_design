@@ -9,4 +9,6 @@ public interface Store extends AutoCloseable {
     void add(Food item) throws SQLException;
 
     List<Food> findAll() throws SQLException;
+
+    List<Food> deleteAll() throws SQLException;
 }
