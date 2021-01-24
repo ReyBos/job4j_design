@@ -53,4 +53,5 @@ cтруктуры данных и алгоритмы, ввод-вывод, SQL, 
   <li>
     Задание <strong><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/ood/isp">"Создать меню"</a></strong>
   </li>
+  <li><strong><a href="https://github.com/ReyBos/job4j_design/tree/master/chapter_005/src/main/java/ru/job4j/tictactoe">Итоговое</a> задание</strong></li>
 </ul>
